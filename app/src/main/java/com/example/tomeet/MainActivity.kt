@@ -1,11 +1,13 @@
 package com.example.tomeet
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,20 +15,40 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        setSupportActionBar(bottom_app_bar)
+        favListeners()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.menu, menu)
+        inflater.inflate(R.menu.bottomappbar_menu, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item!!.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(this,"프로필을 눌르셨습니다 !",Toast.LENGTH_LONG).show()
-            R.id.app_bar_search -> Toast.makeText(this,"검색버튼 을 눌르셨습니다 !",Toast.LENGTH_LONG).show()
-            R.id.app_bar_settings -> Toast.makeText(this,"셋팅 을 눌르셨습니다 !",Toast.LENGTH_LONG).show()
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.app_bar_fav -> {
+                Toast.makeText(applicationContext, "프로필을 선택하셨습니다.", Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.app_bar_search ->{
+                Toast.makeText(applicationContext, "검색을 선택하셨습니다.", Toast.LENGTH_LONG).show()
+                return true
+            }
+            R.id.app_bar_settings ->{
+                Toast.makeText(applicationContext, "설정을 선택하셨습니다.", Toast.LENGTH_LONG).show()
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return true
+    }
+
+
+    private fun favListeners(){
+        fab.setOnClickListener {
+            Toast.makeText(this@MainActivity, "Fab버튼을 누르셨습니다.",Toast.LENGTH_LONG).show()
+        }
     }
 }

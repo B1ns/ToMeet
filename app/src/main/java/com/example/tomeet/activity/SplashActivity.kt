@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
 
-    var token : String? = null
+    var token: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +22,10 @@ class SplashActivity : AppCompatActivity() {
         handler.postDelayed({
             startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
             finish()
-        },2000)
+        }, 2000)
     }
 
-    private fun lottie(){
+    private fun lottie() {
         lottie_splash.playAnimation()
         background.playAnimation()
     }

@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     private val FINSH_INTERVAL_TIME = 2000
-    private var backPressedTime:Long = 0
+    private var backPressedTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +21,12 @@ class LoginActivity : AppCompatActivity() {
 
         register()
 
+        logo.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        }
     }
 
-    private fun register(){
+    private fun register() {
         button_register.setOnClickListener {
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
         }

@@ -3,8 +3,10 @@ package com.example.tomeet.activity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tomeet.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.app_bar_search -> {
                 Toast.makeText(applicationContext, "검색을 선택하셨습니다.", Toast.LENGTH_LONG).show()
+                search_button.visibility = View.VISIBLE
                 return true
             }
             R.id.app_bar_settings -> {
@@ -51,4 +54,5 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "Fab버튼을 누르셨습니다.", Toast.LENGTH_LONG).show()
         }
     }
+
 }

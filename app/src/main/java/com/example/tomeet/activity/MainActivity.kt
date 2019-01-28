@@ -1,11 +1,11 @@
-package com.example.tomeet
+package com.example.tomeet.activity
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import com.example.tomeet.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -33,11 +33,11 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "프로필을 선택하셨습니다.", Toast.LENGTH_LONG).show()
                 true
             }
-            R.id.app_bar_search ->{
+            R.id.app_bar_search -> {
                 Toast.makeText(applicationContext, "검색을 선택하셨습니다.", Toast.LENGTH_LONG).show()
                 return true
             }
-            R.id.app_bar_settings ->{
+            R.id.app_bar_settings -> {
                 Toast.makeText(applicationContext, "설정을 선택하셨습니다.", Toast.LENGTH_LONG).show()
                 return true
             }
@@ -46,9 +46,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun favListeners(){
+    private fun favListeners() {
         fab.setOnClickListener {
-            Toast.makeText(this@MainActivity, "Fab버튼을 누르셨습니다.",Toast.LENGTH_LONG).show()
+            Toast.makeText(this@MainActivity, "Fab버튼을 누르셨습니다.", Toast.LENGTH_LONG).show()
         }
     }
 }

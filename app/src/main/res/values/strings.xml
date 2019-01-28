@@ -14,4 +14,6 @@
     <string name="password">PassWord</string>
     <string name="login">로그인</string>
     <string name="login2">Login</string>
+    <string name="register">회원가입</string>
+    <string name="registerText">계정이 없으시다면</string>
 </resources>

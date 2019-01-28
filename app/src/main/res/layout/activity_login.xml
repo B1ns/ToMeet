@@ -93,12 +93,13 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/search_button"
+            android:id="@+id/login_button"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="180dp"
@@ -111,6 +112,19 @@
             app:backgroundTint="@color/colorPrimaryDark"
             style="@style/Widget.MaterialComponents.Button"
             />
+
+        <TextView
+            android:id="@+id/button_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:padding="3dp"
+            android:text="@string/register"
+            android:textSize="8pt"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintTop_toBottomOf="@+id/login_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "231549717366",
+    "firebase_url": "https://tomeet-c3092.firebaseio.com",
+    "project_id": "tomeet-c3092",
+    "storage_bucket": "tomeet-c3092.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231549717366:android:446d8a75b0b9bcbc",
+        "android_client_info": {
+          "package_name": "com.example.tomeet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "231549717366-pkmamr1qhnd1dmpmcte1s1js5n03219d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tomeet",
+            "certificate_hash": "ce4b894e933d2bc57395f77e550b0cf7ea36c084"
+          }
+        },
+        {
+          "client_id": "231549717366-5hbkc89vfjd778mj6dn0cgqgrja2i0bj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoayBAEdu3nievFcI2iSofH87qIk2oTVg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "231549717366-5hbkc89vfjd778mj6dn0cgqgrja2i0bj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

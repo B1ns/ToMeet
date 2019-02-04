@@ -16,4 +16,8 @@
     <string name="registerText">계정이 없으시다면</string>
     <string name="mypage">MyPage</string>
     <string name="singin">가입하기</string>
+    <string name="title_activity_my_page_setting">MyPageSettingActivity</string>
+    <string name="facebook_app_id">386936921904671</string>
+    <string name="fb_login_protocol_scheme">fb386936921904671</string>
+    <string name="or">OR</string>
 </resources>

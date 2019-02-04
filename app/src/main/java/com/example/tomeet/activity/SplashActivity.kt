@@ -26,7 +26,6 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun lottie() {
-        lottie_splash.playAnimation()
         background.playAnimation()
     }
 }

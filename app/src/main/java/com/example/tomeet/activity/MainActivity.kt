@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.app_bar_search -> {
                 Toast.makeText(applicationContext, "검색을 선택하셨습니다.", Toast.LENGTH_LONG).show()
-                search_button.visibility = View.VISIBLE
+                updateUI()
                 return true
             }
             R.id.app_bar_settings -> {
@@ -56,4 +56,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateUI(){
+        if (search_button.visibility == View.VISIBLE){
+            search_button.visibility = View.GONE
+        }else{
+            search_button.visibility = View.VISIBLE
+        }
+    }
 }

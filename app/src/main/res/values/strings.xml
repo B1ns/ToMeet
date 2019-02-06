@@ -30,4 +30,5 @@
     <string name="nav_item6">item6</string>
     <string name="bottom_sheet_name">ToMeet</string>
     <string name="bottom_sheet_email">qls20021129@gmail.com</string>
+    <string name="secondary_sceen_text">Secondary Screen</string>
 </resources>

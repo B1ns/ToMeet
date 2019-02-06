@@ -6,9 +6,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import com.example.tomeet.R
 import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.app.AlertDialog
 
 
 class MainActivity : AppCompatActivity() {
@@ -63,4 +63,16 @@ class MainActivity : AppCompatActivity() {
             search_button.visibility = View.VISIBLE
         }
     }
+
+    override fun onBackPressed() {
+        val builder = AlertDialog.Builder(this@MainActivity)
+        builder.setTitle("ToMeet")
+        builder.setIcon(R.drawable.main_icon)
+        builder.setMessage("정말로 종료하시겠습니까?")
+        builder.setPositiveButton("확인") { _, _ -> finishAffinity() }
+        builder.setNegativeButton("취소", null)
+        val alertDialog = builder.create()
+        alertDialog.show()
+    }
 }
+

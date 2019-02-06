@@ -11,6 +11,5 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        lottie_register.playAnimation()
     }
 }

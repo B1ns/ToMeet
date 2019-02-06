@@ -11,23 +11,22 @@ import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
+import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import kotlinx.android.synthetic.main.activity_login.*
 import com.google.android.gms.common.api.GoogleApiClient
-import com.google.firebase.auth.FirebaseAuth
 import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FacebookAuthProvider
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.*
+import java.util.*
 
 
 class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var callbackManager: CallbackManager
+    var callbackManager : CallbackManager? = null
 
     companion object {
         private const val RC_SIGN_IN = 9001
@@ -41,18 +40,17 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        lottie()
+        auth = FirebaseAuth.getInstance()
+        callbackManager = CallbackManager.Factory.create()
+
 
         register()
 
         googleAuth()
 
-        facebookAuth()
-
-    }
-
-    private fun lottie() {
-        lottie_background.playAnimation()
+        Facebook_button.setOnClickListener {
+            facebookAuth()
+        }
     }
 
     private fun register() {
@@ -82,19 +80,30 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        auth = FirebaseAuth.getInstance()
-
         Google_Button.setOnClickListener {
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
     }
 
+    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
+        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
+
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Log.d("fuck", "인증성공")
+                    loginSucceed(auth.currentUser)
+                } else {
+                    loginSucceed(null)
+                }
+            }
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        callbackManager.onActivityResult(requestCode, resultCode, data)
+        callbackManager?.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -107,63 +116,43 @@ class LoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedLis
         }
     }
 
-
-    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
-
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    Log.d("fuck", "인증성공")
-                    Toast.makeText(this@LoginActivity, "인증성공 ! ", Toast.LENGTH_LONG).show()
-                    loginSucceed(auth.currentUser)
-                } else {
-                    Toast.makeText(this@LoginActivity, "인증 실패 !", Toast.LENGTH_LONG).show()
-                }
-            }
-    }
-
-    private fun facebookAuth() {
-        auth = FirebaseAuth.getInstance()
-        callbackManager = CallbackManager.Factory.create()
-
-        Facebook_button.setReadPermissions("email", "public_profile")
-        Facebook_button.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
-            override fun onSuccess(result: LoginResult) {
-                handleFacebookAccessToken(result.accessToken!!)
+    fun facebookAuth(){
+        LoginManager.getInstance().logInWithReadPermissions(this,Arrays.asList("email","public_profile"))
+        LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult>{
+            override fun onSuccess(result: LoginResult?) {
+                handleFacebookAccessToken(result?.accessToken)
             }
 
             override fun onCancel() {
             }
 
             override fun onError(error: FacebookException?) {
-                loginSucceed(null)
             }
+
         })
     }
 
-    private fun handleFacebookAccessToken(token: AccessToken) {
-
-        val credential = FacebookAuthProvider.getCredential(token.token)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    Toast.makeText(baseContext, "로그인에 성공하셨습니다.", Toast.LENGTH_SHORT).show()
-                    loginSucceed(user)
-                } else {
-                    Toast.makeText(baseContext, "로그인에 실패하셨습니다.", Toast.LENGTH_SHORT).show()
-                }
-
+    fun handleFacebookAccessToken(token : AccessToken?){
+        val credential = FacebookAuthProvider.getCredential(token?.token!!)
+        auth.signInWithCredential(credential).addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                loginSucceed(task.result?.user)
+            }else{
+                Toast.makeText(this, "성공",Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }
+        }
+
     }
 
-    private fun loginSucceed(user: FirebaseUser?) {
-        if (user != null) {
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+
+
+    private fun loginSucceed(user : FirebaseUser?){
+        if(user != null){
+            Toast.makeText(this@LoginActivity,"로그인 성공 !", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this,MainActivity::class.java))
             finish()
-        } else {
-            Toast.makeText(this@LoginActivity, "로그인을 해주세요.", Toast.LENGTH_LONG).show()
         }
     }
 }

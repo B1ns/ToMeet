@@ -19,6 +19,8 @@ class test : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         cardViewItems.add(CardViewItem(R.drawable.three, "정빈", "나이 18세"))
         cardViewItems.add(CardViewItem(R.drawable.two, "이건호", "나이 19세"))
         cardViewItems.add(CardViewItem(R.drawable.one, "배현빈", "나이 21세"))
+        cardViewItems.add(CardViewItem(R.drawable.junsu, "박준수", "나이 18세"))
+
     }
 
 

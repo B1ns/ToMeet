@@ -22,7 +22,7 @@
             <SearchView
                 android:id="@+id/search_button"
                 android:background="@drawable/button"
-                android:visibility="gone"
+                android:visibility="invisible"
                 android:gravity="center"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
@@ -31,18 +31,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
-            <LinearLayout
-                android:id="@+id/recyclerView_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                    </androidx.recyclerview.widget.RecyclerView>
-            </LinearLayout>
             <Button
                 android:id="@+id/toggle_fab_alignment_button"
                 android:layout_width="wrap_content"
@@ -54,7 +42,7 @@
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/recyclerView_layout" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/screen_label"

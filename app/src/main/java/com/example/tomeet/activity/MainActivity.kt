@@ -65,6 +65,11 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "설정을 선택하셨습니다.", Toast.LENGTH_LONG).show()
                 return true
             }
+            R.id.menu -> {
+                val bottomNavDrawerFragment = BottomNavigationDrawerFragment()
+                bottomNavDrawerFragment.show(supportFragmentManager, bottomNavDrawerFragment.tag)
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -110,9 +115,9 @@ class MainActivity : AppCompatActivity() {
                         else R.menu.bottomappbar_menu
                     )
                     fab?.setImageDrawable(
-                        if (currentFabAlignmentMode == BottomAppBar.FAB_ALIGNMENT_MODE_CENTER) getDrawable(
-                            R.drawable.ic_reply_black_24dp
-                        )
+                        if (currentFabAlignmentMode == BottomAppBar.FAB_ALIGNMENT_MODE_CENTER) {
+                            getDrawable(R.drawable.ic_reply_black_24dp)
+                        }
                         else getDrawable(R.drawable.ic_add_black_24dp)
                     )
                     fab?.show()
@@ -141,9 +146,9 @@ class MainActivity : AppCompatActivity() {
         val marginBottom = 550
         val snackbar = Snackbar.make(
             coordinatorLayout2,
-            "FAB Clicked",
+            "FAB 선택",
             Snackbar.LENGTH_LONG
-        ).setAction("UNDO") {  }
+        ).setAction("확인") {  }
         // Changing message text color
         snackbar.setActionTextColor(ContextCompat.getColor(this, R.color.colorSnackbarButton))
 

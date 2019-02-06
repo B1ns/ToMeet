@@ -20,4 +20,14 @@
     <string name="facebook_app_id">386936921904671</string>
     <string name="fb_login_protocol_scheme">fb386936921904671</string>
     <string name="or">OR</string>
+    <string name="toggle_fab_string">Toggle Screen</string>
+    <string name="primary_screen_text">Primary Screen</string>
+    <string name="nav_item1">item1</string>
+    <string name="nav_item2">item2</string>
+    <string name="nav_item3">item3</string>
+    <string name="nav_item4">item4</string>
+    <string name="nav_item5">item5</string>
+    <string name="nav_item6">item6</string>
+    <string name="bottom_sheet_name">ToMeet</string>
+    <string name="bottom_sheet_email">qls20021129@gmail.com</string>
 </resources>

@@ -31,4 +31,5 @@
     <string name="bottom_sheet_name">ToMeet</string>
     <string name="bottom_sheet_email">qls20021129@gmail.com</string>
     <string name="secondary_sceen_text">Secondary Screen</string>
+    <string name="age">나이</string>
 </resources>

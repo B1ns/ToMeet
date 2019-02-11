@@ -117,8 +117,7 @@ class MainActivity : AppCompatActivity() {
                     fab?.setImageDrawable(
                         if (currentFabAlignmentMode == BottomAppBar.FAB_ALIGNMENT_MODE_CENTER) {
                             getDrawable(R.drawable.ic_reply_black_24dp)
-                        }
-                        else getDrawable(R.drawable.ic_add_black_24dp)
+                        } else getDrawable(R.drawable.ic_add_black_24dp)
                     )
                     fab?.show()
                 }
@@ -129,7 +128,7 @@ class MainActivity : AppCompatActivity() {
             invalidateOptionsMenu()
             bottom_app_bar.navigationIcon = if (bottom_app_bar.navigationIcon != null) null
             else getDrawable(R.drawable.ic_menu_black_24dp)
-            when(screen_label.text) {
+            when (screen_label.text) {
                 getString(R.string.primary_screen_text) -> screen_label.text = getString(R.string.secondary_sceen_text)
                 getString(R.string.secondary_sceen_text) -> screen_label.text = getString(R.string.primary_screen_text)
             }
@@ -148,7 +147,7 @@ class MainActivity : AppCompatActivity() {
             coordinatorLayout2,
             "FAB 선택",
             Snackbar.LENGTH_LONG
-        ).setAction("확인") {  }
+        ).setAction("확인") { }
         // Changing message text color
         snackbar.setActionTextColor(ContextCompat.getColor(this, R.color.colorSnackbarButton))
 

@@ -2,6 +2,6 @@
 <resources>
     <color name="colorPrimary">#edeeff</color>
     <color name="colorPrimaryDark">#bbbccc</color>
-    <color name="colorAccent">#ffffff</color>
+    <color name="colorAccent">#b031ff</color>
     <color name="colorSnackbarButton">#ef7f3e</color>
 </resources>
